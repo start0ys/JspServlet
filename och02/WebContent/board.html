@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시판</title>
+<script type="text/javascript">
+	function chk() {
+		if(!frm.title.value){
+			alert("제목을 입력 해주세요");
+			frm.title.focus;
+			return false;
+		}
+		if(!frm.writer.value){
+			alert("작성자를 입력 해주세요");
+			frm.writer.focus;
+			return false;
+		}
+		if(!frm.content.value){
+			alert("내용을 입력 해주세요");
+			frm.content.focus;
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+	<h1>게시판</h1>
+	<form action="Board" name="frm" method="post" onsubmit="return chk()">
+		<table border="1">
+			<tr>
+				<td>제목</td>
+				<td><input type="text" name="title" ></td>
+				
+			</tr>
+			<tr>
+				<td>작성자</td>
+				<td><input type="text" name="writer"></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td><textarea rows="10" cols="40" name="content"></textarea> </td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="완료"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
