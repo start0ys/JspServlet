@@ -8,10 +8,14 @@
 </head>
 <body>
 	<%
-		String name = request.getParameter("name");
-		String addr = request.getParameter("addr");
-		/* out.println("<h1>"+name+"님"+addr+"에 사시는 군요</h1>"); */
+		int num = Integer.parseInt(request.getParameter("num"));
+	   	int sum = 0;
+	   	for (int i=1; i<=num; i++){
+	   		sum+=i;
+	   	}
+
 	%>
-	<h1><%=name %>님<%=addr %>에 사시는군요</h1>
+	<h1>1부터 <%=num %>까지 합</h1>
+	<%=sum %>
 </body>
 </html>

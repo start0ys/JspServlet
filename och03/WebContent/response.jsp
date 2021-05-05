@@ -8,10 +8,7 @@
 </head>
 <body>
 	<%
-		String name = request.getParameter("name");
-		String addr = request.getParameter("addr");
-		/* out.println("<h1>"+name+"님"+addr+"에 사시는 군요</h1>"); */
+		response.sendRedirect("http://www.naver.com");
 	%>
-	<h1><%=name %>님<%=addr %>에 사시는군요</h1>
 </body>
 </html>

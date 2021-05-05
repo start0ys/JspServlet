@@ -8,10 +8,11 @@
 </head>
 <body>
 	<%
-		String name = request.getParameter("name");
-		String addr = request.getParameter("addr");
-		/* out.println("<h1>"+name+"님"+addr+"에 사시는 군요</h1>"); */
+		int num = Integer.parseInt(request.getParameter("num"));
+		out.println("<h2>구구단 "+num+"단</h2><br>");	
+		for(int i=1;i<=9;i++){
+				out.println(num+"*"+i+" = "+num*i+"<br>");
+			}
 	%>
-	<h1><%=name %>님<%=addr %>에 사시는군요</h1>
 </body>
 </html>

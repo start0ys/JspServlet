@@ -8,10 +8,8 @@
 </head>
 <body>
 	<%
-		String name = request.getParameter("name");
-		String addr = request.getParameter("addr");
-		/* out.println("<h1>"+name+"님"+addr+"에 사시는 군요</h1>"); */
+		String color = request.getAttribute("color").toString();
 	%>
-	<h1><%=name %>님<%=addr %>에 사시는군요</h1>
+	<body bgcolor="<%=color %>">
 </body>
 </html>

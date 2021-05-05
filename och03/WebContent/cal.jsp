@@ -20,8 +20,8 @@
 		request.setAttribute("mul", mul);
 		request.setAttribute("div", div);
 		RequestDispatcher rd = request.getRequestDispatcher("calResult.jsp");
-		/* rd.include(request, response); */
 		rd.forward(request, response);
 	%>
 </body>
 </html>
+<!-- 		rd.include(request, response);  -->
