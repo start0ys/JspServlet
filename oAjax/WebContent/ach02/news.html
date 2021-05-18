@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/httpRequest.js"></script>
+<script type="text/javascript">
+	function chk() {
+		sendRequest("news.jsp",null,getNews,"GET");
+	}
+	function getNews() {
+		var nw = document.getElementById("news");
+		if(httpRequest.readyState==4){
+			if (httpRequest.status==200){
+				nw.innerHTML = httpRequest.responseText;		
+			}
+		}
+	}
+
+</script>
+</head>
+<body>
+	<div id="news"></div>
+	<input type="button" value="뉴스보기" onclick="chk()">
+</body>
+</html>

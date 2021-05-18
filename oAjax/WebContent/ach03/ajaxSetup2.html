@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#sub').click(function() {
+			
+			var sendData = $('form').serialize();
+		
+			
+			$.ajax({
+				type:'GET',
+				url:'checkin.jsp',
+				data : sendData,
+				dataType:'text',
+				success:function(msg){
+					$('#msg').html(msg);
+				}
+			});
+
+		});
+	});
+</script>
+</head>
+<body>
+	<form>
+		이름: <input type="text" name="name" id="name"><p>
+		암호: <input type="password" name="pass" id="pass"><p>
+			 <input type="button" id="sub" value="확인">
+	</form>
+	<div id="msg"></div>
+
+</body>
+</html>
