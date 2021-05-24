@@ -46,15 +46,12 @@ public class UserDAO {
 	}
 	
 	public boolean samechk(String id) throws SQLException {
-		String sql = "select id from user1";
+		String sql = "select id from user1 where id = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				if(rs.getString("id").equals(id)) {
-					return true;
-				}
-			}
+			if(rs.next()) return true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -63,6 +60,47 @@ public class UserDAO {
 			if (conn  != null) conn.close();
 		}
 		return false;
+	}
+	public int login(String id , String password) throws SQLException {
+		String sql = "select password from user1 where id = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				if(rs.getString("password").equals(password)) result = 1;
+				else                                          result = 0;
+			} else     result = -1;
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null) rs.close();
+			if (pstmt != null) pstmt.close();
+			if (conn  != null) conn.close();
+		}
+		return result;
+	}
+	public String getNickname(String id) throws SQLException {
+		String sql = "select nickname from user1 where id = ?";
+		String nickname = "";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				nickname = rs.getString("nickname");
+				return nickname;
+			} 
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null) rs.close();
+			if (pstmt != null) pstmt.close();
+			if (conn  != null) conn.close();
+		}
+		return nickname;
 	}
 	
 	
