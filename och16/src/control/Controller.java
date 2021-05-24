@@ -34,11 +34,13 @@ public class Controller extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		//web.xml에서 propertyConfig에 해당하는 init-param 의 값을 읽어옴
 		String props = config.getInitParameter("config");
+		System.out.println("Controller props -> "+props);
 		//명령어와 처리클래스의 매핑정보를 저장할 Properties객체 생성
 		Properties pr = new Properties();
 		FileInputStream f = null;
 		try {
 			String configFilePath = config.getServletContext().getRealPath(props);
+			System.out.println("Controller configFilePath -> "+configFilePath);
 			f = new FileInputStream(configFilePath);
 			//command.properties파일의 정보를 Properties객체에 저장
 			pr.load(f);
@@ -52,9 +54,11 @@ public class Controller extends HttpServlet {
 		//객체를 하나씩 꺼내서 그 객체명으로 Properties 객체에 저장된 객체에 접근
 		while( keyIter.hasNext()) {
 			String command = (String)keyIter.next(); //writeForm.do
-			String className = pr.getProperty(command); // service.ListAction
+			String className = pr.getProperty(command); // service.WriteFormAction
+			System.out.println("Controller command -> "+command);
+			System.out.println("Controller className -> "+className);
 			try {
-				Class commandClass = Class.forName(className); //해당 문자열을 클래스로 만든다.
+				Class<?> commandClass = Class.forName(className); //해당 문자열을 클래스로 만든다.
 				//Object commandInstance = commandClass.newInstance(); //해당클래스의 객체를 생성
 				
 				//해당클래스의 객체를 생성 (위에거랑 똑같은건데 위에거는 이제 더 이상 지원하지않음)
