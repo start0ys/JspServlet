@@ -93,6 +93,7 @@ public class Controller extends HttpServlet {
 		try {
 			System.out.println(command); 
 			command = command.substring(request.getContextPath().length());
+			System.out.println(command); 
 			com = (CommandProcess)commandMap.get(command);
 			System.out.println("command -> " + command);
 			System.out.println("com -> " + com);
