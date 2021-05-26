@@ -28,17 +28,17 @@
 </head>
 <body>
 	<h1 style="display: inline;">메인페이지</h1>
-	<c:if test="${empty M_nickname }">
+	<c:if test="${empty nickname }">
 		<div style="float: right;" id="right">
-			<input type="button" value="로그인" onclick="location.href = 'login.jsp'">
-			<input type="button" value="회원가입" onclick="location.href = 'join.jsp'"> 
+			<input type="button" value="로그인" onclick="location.href = 'login.do'">
+			<input type="button" value="회원가입" onclick="location.href = 'join.do'"> 
 		</div>
 		<hr>
 	</c:if>
-	<c:if test="${not empty M_nickname }">
+	<c:if test="${not empty nickname }">
 		<div style="float: right;">
-			${M_nickname }님 반갑습니다.
-			<input type="button" value="로그아웃" onclick="location.href = 'logout.jsp'">
+			${nickname }님 반갑습니다.
+			<input type="button" value="로그아웃" onclick="location.href = 'logout.do'">
 		</div>
 		<hr>
 	</c:if>

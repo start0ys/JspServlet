@@ -86,7 +86,6 @@ public class Controller extends HttpServlet {
 		CommandProcess com = null;
 		String command = request.getRequestURI();
 		try {
-			System.out.println(command); 
 			command = command.substring(request.getContextPath().length());
 			com = (CommandProcess)commandMap.get(command);
 			view = com.requestPro(request, response);
