@@ -16,8 +16,26 @@
 		width: 100%;	
 	}
 </style>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	function getDeptName(Vnum) {
+		/* console.log(Vnum); */
+		/* alert("num -> "+Vnum); */
+		$.ajax({
+			url:"<%=context%>/ajaxTest1.do",
+			data:{num : Vnum},
+			dataType:'text',
+			success:function(data){
+				/* alert(".ajax Data "+data); */
+				$('#deptName').val(data);   /* input에 값 넣을때 */
+				/* $('#msg').html(data);   span에 값 넣을때 */
+			}
+		});
+	}
+</script>
 </head>
 <body>
+	<%=context %>
 	<h2>게시판</h2>
 	<table>
 		<tr>
@@ -34,7 +52,7 @@
 					<td>${startNum }</td>
 					<td class="left" width="200">
 						<c:if test="${board.readcount > 20 }">
-							<img src="images/hot.gif">
+							<img src="images/hot.gif" onmouseover="getDeptName(${board.num})">
 						</c:if>
 						<c:if test="${board.re_level > 0 }">
 							<img src="images/level.gif" width="${board.re_level*10 }">
@@ -69,5 +87,7 @@
 			<a href="list.do?pageNum=${startPage+blockSize }">[다음]</a>
 		</c:if>
 	</div>
+	
+	<p>deptName: <input type="text" id="deptName" readonly="readonly"></p>
 </body>
 </html>

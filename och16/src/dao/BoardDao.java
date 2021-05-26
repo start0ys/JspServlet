@@ -229,4 +229,37 @@ public class BoardDao {
 		return result;
 	}
 	
+	public int delete(int num, String passwd) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		String sql1 = "select passwd from board where num = ?";
+		String sql = "delete from board where num = ?";
+		try {
+			String dbPasswd = "";
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dbPasswd = rs.getString("passwd");
+				if (dbPasswd.equals(passwd)) {
+					rs.close();
+					pstmt.close();
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, num);
+					result = pstmt.executeUpdate();					
+				} else { result = 0; }
+			} else { result = -1; }
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if ( rs   != null)  rs.close();
+			if (pstmt != null) pstmt.close();
+			if (conn  != null) conn.close();
+		}
+		return result;
+	}
+	
 }

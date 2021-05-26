@@ -2,6 +2,7 @@ package control;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -102,9 +103,18 @@ public class Controller extends HttpServlet {
 		} catch (Throwable e) {
 			throw new ServletException(e);
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
 		
+		if(command.contains("ajaxTest1")) {
+			System.out.println("ajax String -> "+command);
+			String writer = (String)request.getAttribute("writer");
+			System.out.println("Controller writer -> "+writer);
+			PrintWriter pw = response.getWriter();
+			pw.write(writer);
+			pw.flush();
+		} else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+			dispatcher.forward(request, response);
+		}
 	}
 
 }
