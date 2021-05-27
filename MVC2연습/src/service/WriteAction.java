@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
 
-public class MainAction implements CommandProcess {
+public class WriteAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response)
@@ -31,12 +31,18 @@ public class MainAction implements CommandProcess {
 					}
 				}
 			}
+			if (nickname == null){
+				request.setAttribute("log", 1);
+				return "loginState.jsp";
+			} 
 			request.setAttribute("nickname", nickname);
 			request.setAttribute("id", id);
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return "main.jsp";
+
+		return "write.jsp";
 	}
 
 }

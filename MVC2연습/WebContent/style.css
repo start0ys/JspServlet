@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+.inputtxt {
+    border: 1px solid black;
+    margin-top: 5%;
+}
+
+.left {
+    float: left;
+    margin-left: 5%;
+
+}
+
+.inputComment {
+    margin-top: 1%;
+    text-align: center
+}
+
+#c_content {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 0;
+
+}
+
+.btnFix {
+    width: 90%;
+    margin: 0 auto;
+
+}
+
+#submitBtn {
+	right:10%;
+    /* margin-left: -10px;
+    margin-top: 0;
+    margin-bottom: 3%; */
+    background-color: white;
+    border: 1px dotted black;
+    padding: 7px;
+
+}
+
+.getComment {
+    margin: 0 auto;
+    border-bottom: 1px dotted black;
+    margin-top: 1%;
+    width: 90%;
+    text-align: initial;
+
+
+}
+
+.getWriter {
+    float: left;
+    font-size: 17px;
+    font-weight: bold;
+
+}
+
+.getTxt {
+    margin-top: 1%;
+}
+
+.createDate {
+    font-size: 13px;
+    color: gray;
+}
+
+.comment {
+    background-color: #eeeeee;
+    margin-bottom: 0;
+}
+
+#modify {
+    background-color: rgb(148 220 209);
+    border: 0;
+}
+
+#btnX {
+    background-color: rgb(148 220 209);
+    border: 0;
+}
+
+.details {
+    float: right;
+
+
+}
+
+#detailBtn {
+    background-color: rgb(148 220 209);
+    border: 0;
+}
+
+#mdBtn {
+
+    background-color: white;
+    border: 1px dotted black;
+    padding: 7px;
+    margin-left: 10px;
+    margin-top: 0;
+
+}
+
+#mdContent {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 0;
+}

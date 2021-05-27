@@ -45,7 +45,7 @@
 
 
 	<div class="bbs">
-		<input type="button" value="커뮤니티" onclick="location.href = 'bbs.jsp'">
+		<input type="button" value="커뮤니티" onclick="location.href = 'bbs.do'">
 	</div>
 </body>
 </html>

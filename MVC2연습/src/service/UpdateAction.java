@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.Board;
+import dao.BoardDao;
 import dao.UserDao;
 
-public class MainAction implements CommandProcess {
+public class UpdateAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response)
@@ -31,12 +33,25 @@ public class MainAction implements CommandProcess {
 					}
 				}
 			}
+			if (nickname == null){
+				request.setAttribute("log", 1);
+				return "loginState.jsp";
+			} 
 			request.setAttribute("nickname", nickname);
 			request.setAttribute("id", id);
+			
+			
+			int b_idx = Integer.parseInt(request.getParameter("b_idx"));
+			String pageNum = request.getParameter("pageNum");
+			BoardDao bd = BoardDao.getInstance();
+			Board board = bd.select(b_idx);
+			
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("board", board);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return "main.jsp";
+		return "update.jsp";
 	}
 
 }
