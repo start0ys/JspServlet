@@ -24,11 +24,15 @@
 	#btn{
 		float: right;
 	}
+	a{
+		text-decoration: none;
+		color:black;
+	}
 </style>
 </head>
 
 <body>
-	<h1 style="display: inline;">메인페이지</h1>
+	<h1 style="display: inline;"><a href="main.do">메인페이지</a></h1>
 	<div style="float: right;">
 		${nickname }님 반갑습니다.
 		<input type="button" value="로그아웃" onclick="location.href = 'logout.do'">

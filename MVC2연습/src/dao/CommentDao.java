@@ -177,6 +177,26 @@ public class CommentDao {
 		return list;
 	}
 	
+	public int delete(int c_idx) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = "delete from comment1 where c_idx = ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, c_idx);
+			result = pstmt.executeUpdate();					
+		
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (pstmt != null) pstmt.close();
+			if (conn  != null) conn.close();
+		}
+		return result;
+	}
+	
 	
 	
 	

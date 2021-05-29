@@ -24,11 +24,15 @@
 	#btn{
 		float: right;
 	}
+	a{
+		text-decoration: none;
+		color:black;
+	}
 </style>
 </head>
 
 <body>
-	<h1 style="display: inline;">메인페이지</h1>
+	<h1 style="display: inline;"><a href="main.do">메인페이지</a></h1>
 	<div style="float: right;">
 		${nickname }님 반갑습니다.
 		<input type="button" value="로그아웃" onclick="location.href = 'logout.do'">
@@ -37,9 +41,9 @@
 	<div class="bbs">
 		<h2>글쓰기</h2>
 		<form action="updatePro.do" method="post">
-			<input type="hidden" name="num" value="${board.b_idx }">
 			<input type="hidden" name="pageNum" value="${pageNum }">
 			<input type="hidden" name="id" value="${id }">
+			<input type="hidden" name="b_idx" value="${board.b_idx }">
 			<input type="hidden" name="nickname" value="${nickname }">
 			<input type="text" placeholder="글 제목" name="b_title" id="b_title" maxlength="50" style="height:40px;" required="required" value="${board.b_title }"><p>
 			<pre><textarea  placeholder="글 내용" name="b_content" id="b_content" maxlength="4000" style="height:350px;" required="required">${board.b_content }</textarea></pre><p>

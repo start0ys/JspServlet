@@ -56,7 +56,9 @@ public class BbsAction implements CommandProcess {
 			int startPage = (int)(currentPage - 1) / blockSize * blockSize + 1;
 			int endPage = startPage + blockSize - 1;
 			if ( endPage> pageCnt ) endPage = pageCnt;
+			List<Board> best = bd.best();
 			
+			request.setAttribute("best", best);
 			request.setAttribute("totCnt", totCnt);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("currentPage", currentPage);

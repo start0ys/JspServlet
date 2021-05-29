@@ -37,7 +37,7 @@
 
 <body>
 
-	<h1 style="display: inline;">메인페이지</h1>
+	<h1 style="display: inline;"><a href="main.do">메인페이지</a></h1>
 	<div style="float: right;">
 		${nickname }님 반갑습니다.
 		<input type="button" value="로그아웃" onclick="location.href = 'logout.do'">
@@ -46,6 +46,17 @@
 	<div class="bbs">
 		<table>
 			<tr><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th></tr>
+			<c:forEach var="board" items="${best }">
+				<tr>
+					<td style="width: 55%; font-weight: bold; font-size: 18px;background-color: #ffe3df;">
+						<img src="images/hot.gif">
+						<a href="view.do?b_idx=${board.b_idx }&pageNum=${currentPage}">${board.b_title }</a>
+					</td>
+					<td style="width: 15%;background-color: #ffe3df;">👤${board.nickname }</td>
+					<td style="width: 15%;background-color: #ffe3df;">${board.b_regdate }</td>
+					<td style="width: 15%;background-color: #ffe3df;">${board.b_count }</td>
+				</tr>
+			</c:forEach>
 			<c:if test="${totCnt > 0 }">
 			<c:forEach var="board" items="${list }">
 				<tr>

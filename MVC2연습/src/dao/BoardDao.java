@@ -180,4 +180,83 @@ public class BoardDao {
 		}
 		return board;
 	}
+	
+	public int update(Board board) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = "update board set b_title=?,b_content=? where b_idx = ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, board.getB_title());
+			pstmt.setString(2, board.getB_content());
+			pstmt.setInt(3, board.getB_idx());
+		
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (pstmt != null) pstmt.close();
+			if (conn  != null) conn.close();
+		}
+		return result;
+	}
+	
+	public int delete(int b_idx) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = "delete from board where b_idx = ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, b_idx);
+			result = pstmt.executeUpdate();					
+		
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (pstmt != null) pstmt.close();
+			if (conn  != null) conn.close();
+		}
+		return result;
+	}
+	
+	public List<Board> best () throws SQLException{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Board> list = new ArrayList<Board>();
+		String sql = "select * from "
+								+ "(select rownum rn, a.* from "
+																+ "(select * from board order by b_count desc) a )"
+								+ " where rn between 1 and 3";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				do{
+					Board board = new Board();
+					board.setB_idx(rs.getInt("b_idx"));
+					board.setId(rs.getString("id"));
+					board.setB_title(rs.getString("b_title"));
+					board.setNickname(rs.getString("nickname"));
+					board.setB_regdate(rs.getDate("b_regdate"));
+					board.setB_content(rs.getString("b_content"));
+					board.setB_count(rs.getInt("b_count"));
+					board.setB_img(rs.getString("b_img"));
+					list.add(board);
+				} while(rs.next());
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}  finally {
+			if ( rs   != null)  rs.close();
+			if (pstmt  != null)  pstmt.close();
+			if (conn  != null)  conn.close();
+		}
+		return list;
+	}
 }

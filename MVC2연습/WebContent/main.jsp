@@ -24,18 +24,22 @@
 	    transform: translate(-50%, -50%);
 	    font-size: 50px;
 	}
+	a{
+		text-decoration: none;
+		color:black;
+	}
 </style>
 </head>
 <body>
-	<h1 style="display: inline;">메인페이지</h1>
-	<c:if test="${empty nickname }">
+	<h1 style="display: inline;"><a href="main.do">메인페이지</a></h1>
+	<c:if test="${empty m_nickname }">
 		<div style="float: right;" id="right">
 			<input type="button" value="로그인" onclick="location.href = 'login.do'">
 			<input type="button" value="회원가입" onclick="location.href = 'join.do'"> 
 		</div>
 		<hr>
 	</c:if>
-	<c:if test="${not empty nickname }">
+	<c:if test="${not empty m_nickname }">
 		<div style="float: right;">
 			${nickname }님 반갑습니다.
 			<input type="button" value="로그아웃" onclick="location.href = 'logout.do'">

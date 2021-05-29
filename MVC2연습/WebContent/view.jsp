@@ -25,23 +25,38 @@
 	.hiddenText {
    		display: none;
 
-	} 
-	
+	}
+	a{
+		text-decoration: none;
+		color:black;
+	}
+
 </style>
 <script type="text/javascript">
+	var b = "a";
 	function re(id) {
-	/* 	var hidden = document.getElementsByClassName("hiddenText");
-		hidden.style.display = "none"; */
+		var content2 = document.getElementById(b);
+        content2.style.display = "none";
 		var a = "a" + id;
 		var content = document.getElementById(a);
         content.style.display = "block";
+		b=a;
 	}
+	function del() {
+		const del =  confirm("해당 게시글을 삭제하시겠습니까?");
+		if(del){
+			location.href='delete.do?b_idx=${board.b_idx }&pageNum=${pageNum }';
+		}
+	}
+	
 </script>
 </head>
 
 <body>
+	<div id="a"></div>
+	<div id="b"></div>
 	<div>
-	<h1 style="display: inline;">메인페이지</h1>
+	<h1 style="display: inline;"><a href="main.do">메인페이지</a></h1>
 	<div style="float: right;">
 		${nickname }님 반갑습니다.
 		<input type="button" value="로그아웃" onclick="location.href = 'logout.jsp'">
@@ -62,7 +77,7 @@
 			<div style="position: absolute; right: 11%;">
 				<c:if test="${board.id == id }">
 					<input type="button" value="수정" onclick="location.href='update.do?b_idx=${board.b_idx }&pageNum=${pageNum }'">
-					<input type="button" value="삭제" onclick="location.href='delete.do?b_idx=${board.b_idx }&pageNum=${pageNum }'">
+					<input type="button" value="삭제" onclick="del()">
 				</c:if>
 			</div>
 			<hr>
@@ -86,14 +101,14 @@
     				<div style="margin-left: ${comment.re_level*15 }px; ">
 	                    <div class="getTxt">${comment.c_content }</div>
 	                    <div class="createDate">${comment.c_regdate }</div>
+                	</div>
 	                    <input type="button" value="답글" onclick="re(${comment.c_idx})">
 	                    <c:if test="${comment.id == id }">
-							<input type="button" value="수정" onclick="re(${comment.c_idx})">
-							<input type="button" value="삭제" onclick="location.href='delete.do?b_idx=${board.b_idx }&pageNum=${pageNum }'">
+							<input type="button" value="삭제" onclick="location.href='reDelete.do?c_idx=${comment.c_idx }&pageNum=${pageNum }&b_idx=${board.b_idx }'">
 						</c:if>
 	
 	               		<div class="hiddenText" id="a${comment.c_idx }">
-	                        <form action="reWrite.do?pageNum=${pageNum }" method="post" name="frm1">
+	                        <form action="reWrite.do?pageNum=${pageNum }" method="post" name="frm1" id="frm1">
 	                        	<input type="hidden" name="nickname" value="${nickname }">
 								<input type="hidden" name="id" value="${id }">
 								<input type="hidden" name="b_idx" value="${board.b_idx }">
@@ -109,7 +124,6 @@
 	                            <div><input type="submit" value="등록" id="submitBtn"></div>
 	                        </form>
 	                    </div>
-    				</div>
                      
                 </div>
                 </c:forEach>
