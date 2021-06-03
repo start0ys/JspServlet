@@ -35,6 +35,8 @@ public class BoardDao {
 	}
 	
 	public int write(Board board ) throws SQLException {
+		System.out.println("DAO왓음!");
+		System.out.println(board.getB_title());
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>메인페이지</title>
+<%
+	String context = request.getContextPath(); //모델2에서 유일하게 가능
+%>
 <link rel="stylesheet" type="text/css" href="style.css">
 <style type="text/css">
 	.bbs{
@@ -84,6 +87,7 @@
 			<div class="cot">
 				${content }
 			</div>
+			<c:if test="${not empty board.b_img }"><img src="${board.b_img }" alt=""  style="width: 50%;"></c:if>
 		</div>
 
 		<div class="comment">
