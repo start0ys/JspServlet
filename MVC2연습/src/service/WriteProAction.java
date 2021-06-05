@@ -66,7 +66,7 @@ public class WriteProAction implements CommandProcess {
 			Board board = new Board();
 			if(fileResult == 1) {
 				System.out.println("널아님");
-				board.setB_img(file);
+				board.setB_img(filename);
 			}
 			board.setId(multi.getParameter("id"));
 			board.setNickname(multi.getParameter("nickname"));

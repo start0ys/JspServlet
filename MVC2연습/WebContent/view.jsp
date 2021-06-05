@@ -85,6 +85,13 @@
 			</div>
 			<hr>
 			<div class="cot">
+				<c:if test="${not empty board.b_img }">
+					 <form action = "fileDownload.do" method = "post">
+						<input type = "hidden" name = "fileName" value="${board.b_img }">
+						<p>📁${board.b_img }</p>
+						<input type = "submit" value = "다운로드">
+					 </form>
+				</c:if>
 				${content }
 			</div>
 			<c:if test="${not empty board.b_img }"><img src="${board.b_img }" alt=""  style="width: 50%;"></c:if>
