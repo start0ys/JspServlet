@@ -73,9 +73,6 @@
 			<span style="float: right; margin-right: 10px;">${board.b_regdate }</span>
 			<span style="float: right; margin-right: 10px;">조회수 : ${board.b_count }</span>
 		</div>
-		
-		
-		
 		<div style="margin-top: 50px; margin-bottom: 100px;">
 			<div style="position: absolute; right: 11%;">
 				<c:if test="${board.id == id }">
@@ -94,7 +91,6 @@
 				</c:if>
 				${content }
 			</div>
-			<c:if test="${not empty board.b_img }"><img src="${board.b_img }" alt=""  style="width: 50%;"></c:if>
 		</div>
 
 		<div class="comment">

@@ -16,6 +16,9 @@
 	    top:50%; left:50%;
 	    transform: translate(-50%, -50%);
 	}
+	table{
+		resize: none;
+	}
 	#b_content,#b_title{
 		width: 95%;
 	}
@@ -30,17 +33,7 @@
 		color:black;
 	}
 </style>
-<!-- <script type="text/javascript">
-	var fileResult = ${fileResult};
-	if (fileResult == 1){
-		function() {
-			 var str = "<img src=" + ${file} + ">" // 이미지 태그 삽입
-			 frames.myEditor.focus();
-			 frames.myEditor.document.selection.createRange().pasteHTML(str);
-		}
-	} 
-	
-</script> -->
+
 </head>
 
 <body>
@@ -52,15 +45,10 @@
 	<hr>
 	<div class="bbs">
 		<h2>글쓰기</h2>
-		<!-- <form action="file.do" method="post" enctype="multipart/form-data">
-			<input type="file" name="uploadFile"><p>
-			<input type="submit" value="이미지 업로드">
-		</form> -->
 		<form action="writePro.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${id }">
 			<input type="hidden" name="nickname" value="${nickname }">
 			<input type="file" name="uploadFile"><p>
-			<%-- <c:if test="${fileResult == 1}"><input  type="hidden" name="b_img" value="${file}"></c:if> --%>
 			<input type="text" placeholder="글 제목" name="b_title" id="b_title" maxlength="50" style="height:40px;" required="required"><p>
 			<textarea  placeholder="글 내용" name="b_content" id="b_content" maxlength="4000" style="height:350px;" required="required"></textarea><p>
 			<input type="submit" value="글쓰기" id="btn" >
